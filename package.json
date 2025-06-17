@@ -1,0 +1,60 @@
+{
+  "name": "asheo-pro-extension",
+  "version": "2.5.0",
+  "description": "Enhance your browsing experience with powerful automation, security features, and productivity tools.",
+  "main": "functions/background.js",
+  "scripts": {
+    "build": "npm run lint && npm run copy-files",
+    "build:dev": "npm run copy-files",
+    "build:prod": "npm run lint && npm run test && npm run copy-files && npm run zip",
+    "copy-files": "node scripts/build.js",
+    "lint": "eslint . --ext .js,.json",
+    "lint:fix": "eslint . --ext .js,.json --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "zip": "node scripts/zip.js",
+    "dev": "npm run build:dev && npm run watch",
+    "watch": "nodemon --watch . --ext js,json,html,css --ignore node_modules --ignore dist --exec 'npm run build:dev'",
+    "validate": "web-ext lint",
+    "start:firefox": "web-ext run --source-dir=dist",
+    "start:chrome": "echo 'Load dist/ folder in Chrome Extensions page'",
+    "clean": "rimraf dist *.zip"
+  },
+  "keywords": [
+    "chrome-extension",
+    "browser-automation",
+    "productivity",
+    "security",
+    "manifest-v3"
+  ],
+  "author": "Asheo Development Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "^0.0.268",
+    "@types/jest": "^29.5.12",
+    "archiver": "^6.0.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "fs-extra": "^11.2.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^30.0.0",
+    "nodemon": "^3.1.0",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "web-ext": "^7.11.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asheo-dev/asheo-pro-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/asheo-dev/asheo-pro-extension/issues"
+  },
+  "homepage": "https://asheo.dev"
+}
